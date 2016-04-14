@@ -1,0 +1,24 @@
+FILENAME=Zork.cpp
+FLAGS=-std=c++11 -Wall -o
+EXENAME=zork
+
+GAMEOBJECT=GameHandler.o
+GAMEHEADER=GameHandler.h
+GAMECLASS=GameHandler.cpp
+
+CONFIGOBJECT=Config.o
+CONFIGHEADER=Config.h
+CONFIGCLASS=Config.cpp
+
+main: $(GAMEOBJECT) $(CONFIGOBJECT)
+	g++ $(FILENAME) $(FLAGS) $(EXENAME) $(GAMEOBJECT) $(CONFIGOBJECT)
+
+$(GAMEOBJECT): $(GAMEHEADER) $(GAMECLASS)
+	g++ -c -std=c++11 -Wall $(GAMECLASS)
+
+$(CONFIGOBJECT): $(CONFIGHEADER) $(CONFIGCLASS)
+	g++ -c -std=c++11 -Wall $(CONFIGCLASS)
+
+clean:
+	$(RM) 
+

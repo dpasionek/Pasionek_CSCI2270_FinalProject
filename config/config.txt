@@ -1,0 +1,10 @@
+# Zork Configuation File
+# Pound signs are comments
+# Only modifiy values past the = sign
+# Format: <tag>=<value> no spaces
+# Changes difficulty level
+# Decreases chances for loot, increases chances for unique loot
+# Modifies enemy health
+difficulty-level=1
+start-health=10.0
+
