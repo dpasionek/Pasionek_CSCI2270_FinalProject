@@ -23,7 +23,6 @@ public:
 	Config();
 	~Config();
 	void init(std::string configFile);
-	
 	// Returns the value of a certain tag
 	std::string get(std::string tag);
 	

@@ -19,12 +19,15 @@ The plot of the game is that you're, similar to the classic game, in a forest wi
 
 ## How to Run
 In order to run Zork you'll need to clone this code into your local machine using
+
 `git clone https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject.git`
 
 All of the configuration files are provided. In order to run, navigate to the directory which the makefile is in then in terminal type
+
 `make`
 
 This will build the project. After building sucessfully run using the command
+
 `./zork`
 
 ## Dependencies

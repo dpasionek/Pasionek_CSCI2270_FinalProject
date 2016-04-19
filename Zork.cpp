@@ -5,10 +5,10 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-	cout << "Hello World?" << endl;
 	Config c;
-	GameHandler h(c);
+	GameHandler h(&c);
 	c.init("config/config.txt");
+	h.init();
 	return 0;
 }
 
