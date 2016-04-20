@@ -8,7 +8,7 @@ Are you ever with your significant other and the topic of "We should watch this 
 If you plan on working through git, use the following commands to clone and run the program:
 * Use `git clone https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject.git`
 * Once cloned type `make` to build the project
-* Once built successfully, use `./movies`
+* Once built successfully, use `./MovieList`
 
 ### Dependencies
 While there are no third-party dependencies, this program uses several C++11 methods, so C++11 is **required**.
