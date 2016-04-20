@@ -16,9 +16,12 @@ Additionally, g++ is also **required** in order to compile this program.
 
 ### System Requirements
 * Compiler (g++) and C++11
+
 ### Group Members
 * Dante Pasionek (Project Lead)
+
 ### Contributors
 * None
+
 ### Open issues/Bugs
 * See the [Open Issues](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/issues) list!
