@@ -1,46 +1,24 @@
-# Zork!
-## Vanquish the Evil Within
-### A remake of the classic text based game!
-
-```
-/\_____  \               /\ \        
-\/____//'/'    ___   _ __\ \ \/'\    
-     //'/'    / __`\/\`'__\ \ , <    
-    //'/'___ /\ \L\ \ \ \/ \ \ \\`\  
-    /\_______\ \____/\ \_\  \ \_\ \_\
-    \/_______/\/___/  \/_/   \/_/\/_/                   
-```
-
+# Movie Marathon
+#### Create a list of movies to marathon!
 ## Project Summary
 ### What is this?
-This is a remake of the classic text-based game. This version of Zork attemps to retain some of the classic qualities of the origional Zork game while adding some fun new features. The layout of this game is slightly different from the original version. 
-#### What's Different?
-The plot of the game is that you're, similar to the classic game, in a forest with a nearby house. Your goal is to navigate your way through the house collecting certain items in order to fight the final boss and win the game.
+Are you ever with your significant other and the topic of "We should watch this movie!" comes up? You normally want to see the movie but you end up getting a list that's so long you can't ever remember what to watch or in what order to watch it in. Movie Marathon can help! It provides you with several informational links and resources to help make your next movie night amazing!
 
 ## How to Run
-In order to run Zork you'll need to clone this code into your local machine using
+If you plan on working through git, use the following commands to clone and run the program:
+* Use `git clone https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject.git`
+* Once cloned type `make` to build the project
+* Once built successfully, use `./movies`
 
-`git clone https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject.git`
+### Dependencies
+While there are no third-party dependencies, this program uses several C++11 methods, so C++11 is **required**.
+Additionally, g++ is also **required** in order to compile this program.
 
-All of the configuration files are provided. In order to run, navigate to the directory which the makefile is in then in terminal type
-
-`make`
-
-This will build the project. After building sucessfully run using the command
-
-`./zork`
-
-## Dependencies
-None!
-
-## System Requirements
-Have a computer than can compile using g++ and c++11
-
-## Group Members
-None!
-
-## Contributors
-None!
-
-## Open issues/Bugs
-None! ( Yet ;) )
+### System Requirements
+* Compiler (g++) and C++11
+### Group Members
+* Dante Pasionek (Project Lead)
+### Contributors
+* None
+### Open issues/Bugs
+* See the [Open Issues](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/issues) list!
