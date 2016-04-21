@@ -25,7 +25,7 @@ void Queue::enqueue(std::string toQueue)
 	queueCount++;
 }
 
-void Queue::dequeue()
+std::string Queue::dequeue()
 {
 	if(queueIsEmpty())
 	{
@@ -41,6 +41,8 @@ void Queue::dequeue()
 	std::cout << "The next movie on your list is: " << arrayQueue[queueHead] << std::endl; 
 	std::cout << "You have " << queueCount - 1 << " movies left in your list!" << std::endl;
 	queueCount--;
+
+	return movie;
 }
 
 void Queue::list()

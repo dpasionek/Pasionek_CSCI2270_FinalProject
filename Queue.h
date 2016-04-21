@@ -9,7 +9,7 @@ public:
 	~Queue();
 	void enqueue(std::string);
 	void list();
-	void dequeue();
+	std::string dequeue();
 	std::string find(std::string name);
 	bool queueIsFull();
 	bool queueIsEmpty();
