@@ -4,7 +4,7 @@ MovieHandler::MovieHandler()
 {
 	srand(0);  
 	cache = new Cache;
-};
+}
 
 void MovieHandler::readList()
 {	

@@ -8,7 +8,7 @@ struct Cache
 	std::string currentMovie;
 	std::string URL;
 	int index;
-}
+};
 
 enum Attribute { MOVIE, URL, INDEX };
 
