@@ -10,6 +10,10 @@ If you plan on working through git, use the following commands to clone and run 
 * Once cloned type `make` to build the project
 * Once built successfully, use `./MovieList`
 
+## Enhancing your Experience
+When using this program here are some small tips to help make the experience worth while!
+* **Don't** copy and paste links! Instead if you're running on a UNIX system `CTRL` + `SHIFT` + `CLICK`
+
 ### Dependencies
 While there are no third-party dependencies, this program uses several C++11 methods, so C++11 is **required**.
 Additionally, g++ is also **required** in order to compile this program.
