@@ -13,6 +13,14 @@ If you plan on working through git, use the following commands to clone and run 
 ## Enhancing your Experience
 When using this program here are some small tips to help make the experience worth while!
 * **Don't** copy and paste links! Instead if you're running on a UNIX system `CTRL` + `SHIFT` + `CLICK`
+#### Commands
+Here is a small commands list to refrence
+* `Find <movie title>` Finds a movie, and gives a rotten tomatoes link to your movie
+* `Add <movie title` Will add a movie to your list
+* `Print` Prints your current movie list
+* `Help` Displays the help menu
+* `Info` Displays the information menu
+* `Quit` Terminates the program and writes movie list to file
 
 ### Dependencies
 While there are no third-party dependencies, this program uses several C++11 methods, so C++11 is **required**.
