@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 #include "MovieHandler.h"
 
 using namespace std;
@@ -6,11 +7,52 @@ using namespace std;
 void printMenu();
 void info();
 void help();
+bool checkForArgs(string s);
+string to_lowercase(string s);
 int main()
 {
 
+	string arg = "null";
+	string movie = "null";
+	string cmd = "null";
+	string mInfo = "null";
+
 	info();
+	help();
+
+	MovieHandler mh;
+
+	while(arg != "quit")
+	{
+		getline(cin, arg);
+		arg = to_lowercase(arg);
+		bool hasArg = checkForArgs(arg);
+		
+		cmd = (hasArg) ? arg.substr(0, arg.find_first_of(' ')) : arg;
+		
+		if(cmd == "find")
+		{
+			movie = arg.substr(arg.find_first_of(' ') + 1);
+			mInfo = mh.getURL(movie);
+			std::cout << mInfo << std::endl;
+		}
+	}
+	
 	return 0;
+}
+string to_lowercase(string s)
+{
+	for(unsigned int i = 0; i < s.size(); i++)
+		s[i] = tolower(s[i]);
+	
+	return s;
+}
+bool checkForArgs(string s)
+{
+	for(unsigned int i = 0; i < s.size(); i++)
+		if(s[i] == ' ')
+			return true;
+	return false;
 }
 
 void printMenu()
@@ -38,4 +80,5 @@ void help()
 	cout << "Help - Displays this help menu" << endl;
 	cout << "Info - Prints the information about this program" << endl;
 	cout << "Quit - Quits the program, don't worry your list will be saved" << endl;
+	cout << endl;
 }

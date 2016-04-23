@@ -1,14 +1,17 @@
+#include <fstream>
+#include <vector>
 #include "MovieHandler.h"
 
 MovieHandler::MovieHandler() 
 {
 	srand(0);  
 	cache = new Cache;
+	readList();
 }
 
 void MovieHandler::readList()
 {	
-	ifstream file(FILE_NAME);
+	std::ifstream file(FILE_NAME);
 	
 	if(!file.is_open())
 	{
@@ -21,32 +24,32 @@ void MovieHandler::readList()
 	std::string line = "null";
 	while(getline(file, line)) 
 	{
-		 movieQueue.enqueue(line); 
+		 movieQueue->enqueue(line); 
 	}
 }
 
 void MovieHandler::writeList()
 {
-	ofstream file(FILE_NAME);
+	std::ofstream file(FILE_NAME);
 	if(!file.is_open())
 	{
-		std::cout << "--- Movie List ---" << std:::endl;
+		std::cout << "--- Movie List ---" << std::endl;
 		std::cout << "ERROR: There was an issue opening the movies file" << std::endl;
 		std::cout << "Please make sure the \"" << FILE_NAME << "\" exists!" << std::endl;
 		return;
 	}
 	
 	std::string movie;
-	while(!movieQueue.isQueueEmpty())
+	while(!movieQueue->queueIsEmpty())
 	{
-		movie = movieQueue.dequeue();
+		movie = movieQueue->dequeue();
 		file << movie << std::endl;
 	}
 }
 
 std::string MovieHandler::getURL(std::string name)
 {
-	std::vector<string> messages = 
+	std::vector<std::string> msgs = 
 	{
 		"Here you might find this link informative: ", 
 		"I got a Rotten Tomatoes link for you: ",
@@ -54,11 +57,15 @@ std::string MovieHandler::getURL(std::string name)
 		"You might find some more information here: "
 	};
 	
-	int r = rand() % 4 + 1;
+	int r = rand() % 4;
 	
-	std::string URL = URL_BUFFER + messages[r];
+	for(unsigned int i = 0; i < name.size(); i++)
+		if(name[i] == ' ')
+			name[i] = '_';
+	std::string URL = URL_BUFFER + name;
+	std::string toReturn = msgs[r] + URL;
 
-	return URL;
+	return toReturn;;
 }
 
 void MovieHandler::updateCache(std::string _currentMovie, std::string _URL, int _index)
@@ -81,7 +88,8 @@ std::string MovieHandler::getCacheAttribute(Attribute attribute)
 		case INDEX:
 			return std::to_string(cache->index);
 			break;
-	}	
+	}
+	return "null";	
 }
 
-MovieHandler::~MovieHandler() {  };
+MovieHandler::~MovieHandler() { writeList(); };
