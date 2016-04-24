@@ -47,6 +47,12 @@ void MovieHandler::writeList()
 	}
 }
 
+void MovieHandler::addMovie(std::string movie)
+{
+	if(!movieQueue->queueIsFull())
+		movieQueue->enqueue(movie);
+}
+
 std::string MovieHandler::getURL(std::string name)
 {
 	std::vector<std::string> msgs = 

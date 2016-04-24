@@ -20,8 +20,8 @@ void Queue::enqueue(std::string toQueue)
 	arrayQueue[queueCount] = toQueue;
 	queueTail = (queueTail + 1) % queueSize;
 	std::cout << "--- Movie List ---" << std::endl;
-	std::cout << "You added the movie: " << toQueue << " to your watch list!";
-	std::cout << "This movie is currently number " << queueCount << " on your list" << std::endl;
+	std::cout << "You added the movie: " << toQueue << " to your watch list!" << std::endl;
+	std::cout << "This movie is currently number " << queueCount + 1 << " on your list" << std::endl;
 	queueCount++;
 }
 
@@ -30,7 +30,7 @@ std::string Queue::dequeue()
 	if(queueIsEmpty())
 	{
 		std::cout << "You currently don't have any movies to watch!" << std::endl;
-		return;
+		return "";
 	}	
 	
 	std::string movie = arrayQueue[queueHead];
@@ -54,7 +54,7 @@ void Queue::list()
 	}
 	std::cout << "--- Movie List ---" << std::endl;
 	for(int i = queueHead; i < queueCount; i++)
-		std::cout << i << ".) " << arrayQueue[i] << std::endl;
+		std::cout << i + 1 << ".) " << arrayQueue[i] << std::endl;
 }
 
 std::string Queue::find(std::string name)

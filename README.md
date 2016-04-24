@@ -13,15 +13,18 @@ If you plan on working through git, use the following commands to clone and run 
 ## Enhancing your Experience
 When using this program here are some small tips to help make the experience worth while!
 * **Don't** copy and paste links! Instead if you're running on a UNIX system `CTRL` + `SHIFT` + `CLICK`
+* If a movie you want is the incorrect one, try putting the year after the title.
+ * For example: If you use `find Inside Out` it will return the 2005 movie Inside Out, a Mystery / Drama. If you wanted the animated movie Inside Out, you should use `find Inside Out 2015` and it will return the 2015 animated movie!
 
 #### Commands
 Here is a small commands list to refrence
 * `Find <movie title>` Finds a movie, and gives a rotten tomatoes link to your movie
-* `Add <movie title` Will add a movie to your list
+* `Add <movie title>` Will add a movie to your list
 * `Print` Prints your current movie list
 * `Help` Displays the help menu
 * `Info` Displays the information menu
 * `Quit` Terminates the program and writes movie list to file
+  * **Note**: <> denotes a required parameter!
 
 ### Dependencies
 While there are no third-party dependencies, this program uses several C++11 methods, so C++11 is **required**.

@@ -4,7 +4,6 @@
 
 using namespace std;
 
-void printMenu();
 void info();
 void help();
 bool checkForArgs(string s);
@@ -36,6 +35,17 @@ int main()
 			mInfo = mh.getURL(movie);
 			std::cout << mInfo << std::endl;
 		}
+		else if(cmd == "add")
+		{
+			movie = arg.substr(arg.find_first_of(' ') + 1);
+			mh.addMovie(movie);
+		}
+		else if(cmd == "print")
+			mh.movieQueue->list();
+		else if(cmd == "help")
+			help();
+		else if(cmd == "info")
+			info();
 	}
 	
 	return 0;
@@ -55,13 +65,6 @@ bool checkForArgs(string s)
 	return false;
 }
 
-void printMenu()
-{
-	cout << "--- Movie List ---" << endl;
-	
-	
-}
-
 void info()
 {
 	cout << "--- Movie List Info ---" << endl;
@@ -76,6 +79,7 @@ void help()
 {
 	cout << "--- Movie List Commands ---" << endl;
 	cout << "Find <move title> - finds a movie and gives you information about it!" << endl;
+	cout << "Add <movie title> - Adds a movie to your list!" << endl;
 	cout << "Print - Will print your current list of movies" << endl;
 	cout << "Help - Displays this help menu" << endl;
 	cout << "Info - Prints the information about this program" << endl;
