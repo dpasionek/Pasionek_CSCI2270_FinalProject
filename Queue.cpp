@@ -9,7 +9,7 @@ Queue::Queue(int size)
 	queueCount = 0;
 }
 
-void Queue::enqueue(std::string toQueue)
+void Queue::enqueue(std::string toQueue, bool msgs)
 {
 	if(queueIsFull())
 	{
@@ -19,13 +19,15 @@ void Queue::enqueue(std::string toQueue)
 	
 	arrayQueue[queueCount] = toQueue;
 	queueTail = (queueTail + 1) % queueSize;
-	std::cout << "--- Movie List ---" << std::endl;
-	std::cout << "You added the movie: " << toQueue << " to your watch list!" << std::endl;
-	std::cout << "This movie is currently number " << queueCount + 1 << " on your list" << std::endl;
+	if(msgs) {
+		std::cout << "--- Movie List ---" << std::endl;
+		std::cout << "You added the movie: " << toQueue << " to your watch list!" << std::endl;
+		std::cout << "This movie is currently number " << queueCount + 1 << " on your list" << std::endl;
+	}
 	queueCount++;
 }
 
-std::string Queue::dequeue()
+std::string Queue::dequeue(bool msgs)
 {
 	if(queueIsEmpty())
 	{
@@ -36,10 +38,12 @@ std::string Queue::dequeue()
 	std::string movie = arrayQueue[queueHead];
 	arrayQueue[queueHead] = "null";
 	queueHead = (queueHead + 1) % queueSize;
-	std::cout << "--- Movie List ---" << std::endl;
-	std::cout << "You've watched the movie \"" << movie << "\"!" << std::cout;
-	std::cout << "The next movie on your list is: " << arrayQueue[queueHead] << std::endl; 
-	std::cout << "You have " << queueCount - 1 << " movies left in your list!" << std::endl;
+	if(msgs) {
+		std::cout << "--- Movie List ---" << std::endl;
+		std::cout << "You've watched the movie \"" << movie << "\"!" << std::cout;
+		std::cout << "The next movie on your list is: " << arrayQueue[queueHead] << std::endl; 
+		std::cout << "You have " << queueCount - 1 << " movies left in your list!" << std::endl;
+	}
 	queueCount--;
 
 	return movie;

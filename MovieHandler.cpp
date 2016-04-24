@@ -24,7 +24,7 @@ void MovieHandler::readList()
 	std::string line = "null";
 	while(getline(file, line)) 
 	{
-		 movieQueue->enqueue(line); 
+		 movieQueue->enqueue(line, false); 
 	}
 }
 
@@ -42,7 +42,7 @@ void MovieHandler::writeList()
 	std::string movie;
 	while(!movieQueue->queueIsEmpty())
 	{
-		movie = movieQueue->dequeue();
+		movie = movieQueue->dequeue(false);
 		file << movie << std::endl;
 	}
 }
@@ -50,7 +50,7 @@ void MovieHandler::writeList()
 void MovieHandler::addMovie(std::string movie)
 {
 	if(!movieQueue->queueIsFull())
-		movieQueue->enqueue(movie);
+		movieQueue->enqueue(movie, true);
 }
 
 std::string MovieHandler::getURL(std::string name)

@@ -7,9 +7,9 @@ class Queue
 public:
 	Queue(int);
 	~Queue();
-	void enqueue(std::string);
+	void enqueue(std::string, bool msgs);
 	void list();
-	std::string dequeue();
+	std::string dequeue(bool msgs);
 	std::string find(std::string name);
 	bool queueIsFull();
 	bool queueIsEmpty();

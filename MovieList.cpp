@@ -46,6 +46,8 @@ int main()
 			help();
 		else if(cmd == "info")
 			info();
+		else if(cmd == "watched")
+			mh.movieQueue->dequeue(true);
 	}
 	
 	return 0;
@@ -80,6 +82,7 @@ void help()
 	cout << "--- Movie List Commands ---" << endl;
 	cout << "Find <move title> - finds a movie and gives you information about it!" << endl;
 	cout << "Add <movie title> - Adds a movie to your list!" << endl;
+	cout << "Watched - Takes the first movie in your list and removes it from the list" << endl;
 	cout << "Print - Will print your current list of movies" << endl;
 	cout << "Help - Displays this help menu" << endl;
 	cout << "Info - Prints the information about this program" << endl;

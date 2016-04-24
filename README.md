@@ -20,6 +20,7 @@ When using this program here are some small tips to help make the experience wor
 Here is a small commands list to refrence
 * `Find <movie title>` Finds a movie, and gives a rotten tomatoes link to your movie
 * `Add <movie title>` Will add a movie to your list
+* `Watched` Will remove the first movie in your movie queue.
 * `Print` Prints your current movie list
 * `Help` Displays the help menu
 * `Info` Displays the information menu
