@@ -41,13 +41,13 @@ int main()
 			mh.addMovie(movie);
 		}
 		else if(cmd == "print")
-			mh.movieQueue->list();
+			mh.print();
 		else if(cmd == "help")
 			help();
 		else if(cmd == "info")
 			info();
 		else if(cmd == "watched")
-			mh.movieQueue->dequeue(true);
+			mh.pop();
 	}
 	
 	return 0;

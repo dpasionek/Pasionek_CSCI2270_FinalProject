@@ -6,7 +6,11 @@ MovieHandler::MovieHandler()
 {
 	srand(0);  
 	cache = new Cache;
+	head = new Node("null", "null", nullptr, nullptr); 
 	readList();
+	std::cout << "READ" << std::endl;
+
+
 }
 
 void MovieHandler::readList()
@@ -21,10 +25,31 @@ void MovieHandler::readList()
 		return;
 	}
 
+	Node * temp = nullptr;
+	Node * parent = nullptr;
 	std::string line = "null";
 	while(getline(file, line)) 
 	{
-		 movieQueue->enqueue(line, false); 
+		Node * newNode = new Node(line, getURL(line),  nullptr, nullptr);
+		if(head->movie != "null")
+		{
+			temp = head;
+			parent = temp;
+			std::cout << "---" << std::endl;
+			while(temp->next != nullptr)
+			{
+				std::cout << "Moving" << std::endl;
+				parent = temp;
+				temp = temp->next;
+			}
+			std::cout << "---" << std::endl;
+			parent->next = newNode;
+			newNode->previous = parent;
+		}
+		else if(head->movie == "null")
+		{
+			head = newNode;
+		}
 	}
 }
 
@@ -40,19 +65,90 @@ void MovieHandler::writeList()
 	}
 	
 	std::string movie;
-	while(!movieQueue->queueIsEmpty())
+	Node * temp = head;
+	while(temp != nullptr)
 	{
-		movie = movieQueue->dequeue(false);
-		file << movie << std::endl;
+		std::cout << "WRITING: " << temp->movie << std::endl;
+		file << temp->movie << std::endl;
+		temp = temp->next;	
+	}
+	file.close();
+	
+}
+
+void MovieHandler::print()
+{
+	Node * print = head;
+	int i = 1;
+	while(print != nullptr)
+	{
+		std::cout << i << ".) " << print->movie << std::endl;
+		i++;
+		print = print->next; 
 	}
 }
 
 void MovieHandler::addMovie(std::string movie)
 {
-	if(!movieQueue->queueIsFull())
-		movieQueue->enqueue(movie, true);
+	Node * newNode = new Node(movie, getURL(movie), nullptr, nullptr);
+	if(head == nullptr || head->movie == "null")
+	{
+		head = newNode;
+		return;
+	}
+	Node * placement = head;
+	Node * parent = placement;
+	while(placement->next != nullptr)
+	{
+		placement = placement->next;
+	}
+	
+	placement->next = newNode;
+	newNode->previous = placement;
+	
 }
 
+void MovieHandler::removeMovie(std::string title)
+{
+	Node * search = head;
+	while(search->movie != title || search == nullptr)
+	{
+		search = search->next;
+	}	
+
+	if(search == nullptr)
+	{
+		std::cout << "--- Movie List ---" << std::endl;
+		std::cout << "Error: The movie \"" << title << "\" was not found in your list!" << std::endl;
+		return;
+	}
+	
+	Node * previous = search->previous;
+	Node * next = search->next;
+
+	previous->next = next;
+	next->previous = previous;
+	
+	search->previous = nullptr;
+	search->next = nullptr;
+
+	delete search;
+}
+void MovieHandler::pop()
+{
+	if(head == nullptr)
+	{
+		std::cout << "--- Movie List ---" << std::endl;
+		std::cout << "Error: There's no more movies in your list to watch!" << std::endl;
+		std::cout << "Use \"Add <movie title\" to add more movies!" << std::endl;
+		return;
+	}
+	Node * temp = head->next;
+	Node * toDelete = head;
+	head = temp;
+	delete toDelete;
+	
+}
 std::string MovieHandler::getURL(std::string name)
 {
 	std::vector<std::string> msgs = 
