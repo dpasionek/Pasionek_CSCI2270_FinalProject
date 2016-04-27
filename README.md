@@ -20,12 +20,27 @@ When using this program here are some small tips to help make the experience wor
 Here is a small commands list to refrence
 * `Find <movie title>` Finds a movie, and gives a rotten tomatoes link to your movie
 * `Add <movie title>` Will add a movie to your list
+* `Remove <movie title>` Removes a movie from your list
 * `Watched` Will remove the first movie in your movie queue.
 * `Print` Prints your current movie list
 * `Help` Displays the help menu
 * `Info` Displays the information menu
 * `Quit` Terminates the program and writes movie list to file
   * **Note**: <> denotes a required parameter!
+
+### Grading Requirements
+
+#### One Class
+* The one class can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.cpp) additionally it's header file can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.h). It's implmentation can be found in the main class located [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieList.cpp#L22).
+
+#### One Data Structure
+* The data structure I used was a linked list. It's definition can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.h#L12). It's implimentation can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.cpp).
+
+#### Ten Public Methods
+* All eleven of the public methods I used can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.h#L12). Their definitions can be viewed [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.cpp). Their implementations can be seen [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieList.cpp).
+
+#### The Driver
+* The drive class is the [MovieList.cpp](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieList.cpp) file. Implementations of all the public methods can be viewed there.
 
 ### Dependencies
 While there are no third-party dependencies, this program uses several C++11 methods, so C++11 is **required**.
