@@ -21,6 +21,7 @@ Here is a small commands list to refrence
 * `Find <movie title>` Finds a movie, and gives a rotten tomatoes link to your movie
 * `Add <movie title>` Will add a movie to your list
 * `Remove <movie title>` Removes a movie from your list
+* `History` - Will peek at your most recent history with the program.
 * `Watched` Will remove the first movie in your movie queue.
 * `Print` Prints your current movie list
 * `Help` Displays the help menu

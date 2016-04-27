@@ -112,6 +112,11 @@ void MovieHandler::addMovie(std::string movie)
 	if(head == nullptr || head->movie == "null")
 	{
 		head = newNode;
+		 std::cout << "--- Movie List ---" << std::endl;
+	       	 std::cout << "You added the movie: " << newNode->movie << std::endl;
+       		 std::cout << "URL: " << newNode->URL << std::endl;
+       		 std::cout << " ------------" << std::endl;
+
 		return;
 	}
 	Node * placement = head;
@@ -136,6 +141,14 @@ void MovieHandler::addMovie(std::string movie)
 void MovieHandler::removeMovie(std::string title)
 {
 	Node * search = head;
+	if(search == nullptr)
+	{
+		std::cout << "--- Movie List ---" << std::endl;
+		std::cout << "Your movie list is currently empty!" << std::endl;
+		std::cout << "Make sure that you're removing something in the list already!" << std::endl;
+		return;
+	
+	}
 	if(title == head->movie)
 	{
 		head = search->next;
@@ -143,13 +156,15 @@ void MovieHandler::removeMovie(std::string title)
 		delete search;
 
 	        std::cout << "--- Movie List ---" << std::endl;
-       		std::cout << "Removing \""<< title << "\" fromyour movie list!" << std::endl;
+       		std::cout << "Removing \""<< title << "\" from your movie list!" << std::endl;
        	 	std::cout << "The movie you requested has been removed." << std::endl;
 		return;
 	}
 
-	while(search->movie != title || search == nullptr)
-	{	
+	while(search != nullptr)
+	{
+		if(search->movie == title)
+			break;	
 		search = search->next;
 	}
 
@@ -235,11 +250,11 @@ std::string MovieHandler::getURL(std::string name, bool msg)
 /*
 * Updates the cache for the recent history thing
 */
-void MovieHandler::updateCache(std::string _currentMovie, std::string _URL, int _index)
+void MovieHandler::updateCache(std::string _currentMovie, std::string _URL, std::string _action)
 {
 	cache->currentMovie = _currentMovie;
 	cache->URL = _URL;
-	cache->index = _index;
+	cache->action = _action;
 }
 
 /*
@@ -255,8 +270,8 @@ std::string MovieHandler::getCacheAttribute(Attribute attribute)
 		case URL:
 			return cache->URL;
 			break;
-		case INDEX:
-			return std::to_string(cache->index);
+		case ACTION:
+			return cache->action;
 			break;
 	}
 	return "null";	

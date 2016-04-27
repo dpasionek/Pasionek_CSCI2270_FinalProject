@@ -35,16 +35,27 @@ int main()
 			movie = arg.substr(arg.find_first_of(' ') + 1);
 			mInfo = mh.getURL(movie, true);
 			std::cout << mInfo << std::endl;
+			mh.updateCache(movie, mh.getURL(movie, false), "FIND");
 		}
 		else if(cmd == "add")
 		{
 			movie = arg.substr(arg.find_first_of(' ') + 1);
 			mh.addMovie(movie);
+			mh.updateCache(movie, mh.getURL(movie, false), "ADD");
 		}
 		else if(cmd == "remove")
 		{
 			movie = arg.substr(arg.find_first_of(' ') + 1);
 			mh.removeMovie(movie);
+			mh.updateCache(movie, mh.getURL(movie, false), "REMOVE");
+		}
+		else if(cmd == "history")
+		{
+			std::cout << "--- Movie List: HISTORY ---" << std::endl;
+			std::cout << "Here's your most recent search information" << std::endl;
+			std::cout << "Action: " << mh.getCacheAttribute(MovieHandler::ACTION) << std::endl;
+			std::cout << "Movie: " << mh.getCacheAttribute(MovieHandler::MOVIE) << std::endl;
+			std::cout << "URL: " << mh.getCacheAttribute(MovieHandler::URL) << std::endl; 
 		}
 		else if(cmd == "print")
 			mh.print();
@@ -90,6 +101,7 @@ void help()
 	cout << "Add <movie title> - Adds a movie to your list!" << endl;
 	cout << "Remove <movie title> - Removes a movie from your list." << endl;
 	cout << "Watched - Takes the first movie in your list and removes it from the list" << endl;
+	cout << "History - Peeks at your most recent action" << endl;
 	cout << "Print - Will print your current list of movies" << endl;
 	cout << "Help - Displays this help menu" << endl;
 	cout << "Info - Prints the information about this program" << endl;

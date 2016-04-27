@@ -11,7 +11,7 @@ struct Cache
 {
 	std::string currentMovie;
 	std::string URL;
-	int index;
+	std::string action;
 };
 
 /*
@@ -35,12 +35,12 @@ struct Node
 	}Node(){};
 };
 
-/* Attribute for the cache, makes calling the getAttribute function easier  */
-enum Attribute { MOVIE, URL, INDEX };
-
 class MovieHandler
 {
 public:
+	/* Attribute for the cache, makes calling the getAttribute function easier  */
+	enum Attribute { MOVIE, URL, ACTION };
+
 	// Constructor, just initializes some of the variables
 	MovieHandler();
 	
@@ -59,7 +59,7 @@ public:
 
 	// Updates the Cache, so that the "past history" thing I talked about
 	// earlier works nicely.
-	void updateCache(std::string _currentMovie, std::string _URL, int _index);
+	void updateCache(std::string _currentMovie, std::string _URL, std::string action);
 	
 	// Removes a movie from the list, can be anywhere in the list
 	void removeMovie(std::string title);
