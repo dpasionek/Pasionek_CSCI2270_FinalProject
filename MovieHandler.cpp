@@ -8,9 +8,6 @@ MovieHandler::MovieHandler()
 	cache = new Cache;
 	head = new Node("null", "null", nullptr, nullptr); 
 	readList();
-	std::cout << "READ" << std::endl;
-
-
 }
 
 void MovieHandler::readList()
@@ -26,25 +23,21 @@ void MovieHandler::readList()
 	}
 
 	Node * temp = nullptr;
-	Node * parent = nullptr;
 	std::string line = "null";
 	while(getline(file, line)) 
 	{
-		Node * newNode = new Node(line, getURL(line),  nullptr, nullptr);
+		Node * newNode = new Node(line, getURL(line, false),  nullptr, nullptr);
 		if(head->movie != "null")
 		{
 			temp = head;
-			parent = temp;
-			std::cout << "---" << std::endl;
 			while(temp->next != nullptr)
 			{
-				std::cout << "Moving" << std::endl;
-				parent = temp;
+				
 				temp = temp->next;
 			}
-			std::cout << "---" << std::endl;
-			parent->next = newNode;
-			newNode->previous = parent;
+			
+			temp->next = newNode;
+			newNode->previous = temp;
 		}
 		else if(head->movie == "null")
 		{
@@ -68,7 +61,6 @@ void MovieHandler::writeList()
 	Node * temp = head;
 	while(temp != nullptr)
 	{
-		std::cout << "WRITING: " << temp->movie << std::endl;
 		file << temp->movie << std::endl;
 		temp = temp->next;	
 	}
@@ -80,6 +72,13 @@ void MovieHandler::print()
 {
 	Node * print = head;
 	int i = 1;
+	std::cout << "--- Movie List ---" << std::endl;
+	if(head == nullptr)
+	{
+		std::cout << "There are currently no movies for you to watch!" << std::endl;
+		std::cout << "Add some with the add <movie> command!" << std::endl;
+		return;
+	}
 	while(print != nullptr)
 	{
 		std::cout << i << ".) " << print->movie << std::endl;
@@ -90,7 +89,7 @@ void MovieHandler::print()
 
 void MovieHandler::addMovie(std::string movie)
 {
-	Node * newNode = new Node(movie, getURL(movie), nullptr, nullptr);
+	Node * newNode = new Node(movie, getURL(movie, false), nullptr, nullptr);
 	if(head == nullptr || head->movie == "null")
 	{
 		head = newNode;
@@ -105,16 +104,33 @@ void MovieHandler::addMovie(std::string movie)
 	
 	placement->next = newNode;
 	newNode->previous = placement;
+
+	std::cout << "--- Movie List ---" << std::endl;
+	std::cout << "You added the movie: " << newNode->movie << std::endl;
+	std::cout << "URL: " << newNode->URL << std::endl;
+	std::cout << " ------------" << std::endl;
 	
 }
 
 void MovieHandler::removeMovie(std::string title)
 {
 	Node * search = head;
-	while(search->movie != title || search == nullptr)
+	if(title == head->movie)
 	{
+		head = search->next;
+		search->previous = nullptr;
+		delete search;
+
+	        std::cout << "--- Movie List ---" << std::endl;
+       		std::cout << "Removing \""<< title << "\" fromyour movie list!" << std::endl;
+       	 	std::cout << "The movie you requested has been removed." << std::endl;
+		return;
+	}
+
+	while(search->movie != title || search == nullptr)
+	{	
 		search = search->next;
-	}	
+	}
 
 	if(search == nullptr)
 	{
@@ -133,6 +149,10 @@ void MovieHandler::removeMovie(std::string title)
 	search->next = nullptr;
 
 	delete search;
+	
+	std::cout << "--- Movie List ---" << std::endl;
+	std::cout << "Removing \""<< title << "\" fromyour movie list!" << std::endl;
+	std::cout << "The movie you requested has been removed." << std::endl;
 }
 void MovieHandler::pop()
 {
@@ -146,10 +166,23 @@ void MovieHandler::pop()
 	Node * temp = head->next;
 	Node * toDelete = head;
 	head = temp;
+	std::string name = toDelete->movie;
 	delete toDelete;
+
+	std::cout << "--- Movie List ---" << std::endl;
+	std::cout << "You watched the movie \"" << name << "\"!" << std::endl;
+	if(head != nullptr)
+	{
+		std::cout << "The next movie in your list is: \"" << head->movie << "\""<< std::endl;
+		std::cout << "URL: " << head->URL << std::endl; 
+	}
+	else
+	{
+		std::cout << "There are no more movies in your list! Add some with the \"add <movie>\" command!" << std::endl;
+	}
 	
 }
-std::string MovieHandler::getURL(std::string name)
+std::string MovieHandler::getURL(std::string name, bool msg)
 {
 	std::vector<std::string> msgs = 
 	{
@@ -165,9 +198,9 @@ std::string MovieHandler::getURL(std::string name)
 		if(name[i] == ' ')
 			name[i] = '_';
 	std::string URL = URL_BUFFER + name;
-	std::string toReturn = msgs[r] + URL;
+	std::string toReturn = (msg) ? msgs[r] + URL : URL;
 
-	return toReturn;;
+	return toReturn;
 }
 
 void MovieHandler::updateCache(std::string _currentMovie, std::string _URL, int _index)

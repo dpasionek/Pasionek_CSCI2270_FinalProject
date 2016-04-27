@@ -31,14 +31,20 @@ int main()
 		
 		if(cmd == "find")
 		{
+			std::cout << "--- Movie List: FIND ---" << std::endl;
 			movie = arg.substr(arg.find_first_of(' ') + 1);
-			mInfo = mh.getURL(movie);
+			mInfo = mh.getURL(movie, true);
 			std::cout << mInfo << std::endl;
 		}
 		else if(cmd == "add")
 		{
 			movie = arg.substr(arg.find_first_of(' ') + 1);
 			mh.addMovie(movie);
+		}
+		else if(cmd == "remove")
+		{
+			movie = arg.substr(arg.find_first_of(' ') + 1);
+			mh.removeMovie(movie);
 		}
 		else if(cmd == "print")
 			mh.print();
@@ -80,8 +86,9 @@ void info()
 void help()
 {
 	cout << "--- Movie List Commands ---" << endl;
-	cout << "Find <move title> - finds a movie and gives you information about it!" << endl;
+	cout << "Find <movie title> - finds a movie and gives you information about it!" << endl;
 	cout << "Add <movie title> - Adds a movie to your list!" << endl;
+	cout << "Remove <movie title> - Removes a movie from your list." << endl;
 	cout << "Watched - Takes the first movie in your list and removes it from the list" << endl;
 	cout << "Print - Will print your current list of movies" << endl;
 	cout << "Help - Displays this help menu" << endl;
