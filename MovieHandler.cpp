@@ -2,6 +2,10 @@
 #include <vector>
 #include "MovieHandler.h"
 
+/*
+* Initializes the variabled declared in the header file
+* Also reads in the movies.data file
+*/
 MovieHandler::MovieHandler() 
 {
 	srand(0);  
@@ -10,6 +14,9 @@ MovieHandler::MovieHandler()
 	readList();
 }
 
+/*
+* Reads in the file, and creates the linked list that stores the movies
+*/
 void MovieHandler::readList()
 {	
 	std::ifstream file(FILE_NAME);
@@ -46,6 +53,11 @@ void MovieHandler::readList()
 	}
 }
 
+/*
+* Writes the list to a file, writes it in order of how the list was made.
+* Meaning: The first movie in the the first movie written, and also the first movie read
+* to maintain that movie being the head of the list.
+*/
 void MovieHandler::writeList()
 {
 	std::ofstream file(FILE_NAME);
@@ -68,6 +80,10 @@ void MovieHandler::writeList()
 	
 }
 
+/*
+* Prints out the list of movies in  order of what 
+* should be watched first (added first)
+*/
 void MovieHandler::print()
 {
 	Node * print = head;
@@ -87,6 +103,9 @@ void MovieHandler::print()
 	}
 }
 
+/*
+* Adds a movie to the end of the list
+*/
 void MovieHandler::addMovie(std::string movie)
 {
 	Node * newNode = new Node(movie, getURL(movie, false), nullptr, nullptr);
@@ -111,6 +130,9 @@ void MovieHandler::addMovie(std::string movie)
 	
 }
 
+/*
+* Removes a movie anywhere in the list
+*/
 void MovieHandler::removeMovie(std::string title)
 {
 	Node * search = head;
@@ -153,6 +175,10 @@ void MovieHandler::removeMovie(std::string title)
 	std::cout << "Removing \""<< title << "\" fromyour movie list!" << std::endl;
 	std::cout << "The movie you requested has been removed." << std::endl;
 }
+
+/*
+* Removes the first item in the list, and resets the head
+*/
 void MovieHandler::pop()
 {
 	if(head == nullptr)
@@ -181,6 +207,10 @@ void MovieHandler::pop()
 	}
 	
 }
+
+/*
+* Returns the URL and optional message
+*/
 std::string MovieHandler::getURL(std::string name, bool msg)
 {
 	std::vector<std::string> msgs = 
@@ -202,6 +232,9 @@ std::string MovieHandler::getURL(std::string name, bool msg)
 	return toReturn;
 }
 
+/*
+* Updates the cache for the recent history thing
+*/
 void MovieHandler::updateCache(std::string _currentMovie, std::string _URL, int _index)
 {
 	cache->currentMovie = _currentMovie;
@@ -209,6 +242,9 @@ void MovieHandler::updateCache(std::string _currentMovie, std::string _URL, int 
 	cache->index = _index;
 }
 
+/*
+* Returns the cache attribute
+*/
 std::string MovieHandler::getCacheAttribute(Attribute attribute)
 {
 	switch(attribute)
@@ -226,4 +262,7 @@ std::string MovieHandler::getCacheAttribute(Attribute attribute)
 	return "null";	
 }
 
+/*
+* Writes the list to the file movies.data
+*/
 MovieHandler::~MovieHandler() { writeList(); };
