@@ -28,18 +28,18 @@ Here is a small commands list to refrence
 * `Quit` Terminates the program and writes movie list to file
   * **Note**: <> denotes a required parameter!
 
-### Grading Requirements
+## Grading Requirements
 
-#### One Class
+##### One Class
 * The one class can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.cpp) additionally it's header file can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.h). It's implmentation can be found in the main class located [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieList.cpp#L22).
 
-#### One Data Structure
+##### One Data Structure
 * The data structure I used was a linked list. It's definition can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.h#L12). It's implimentation can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.cpp).
 
-#### Ten Public Methods
+##### Ten Public Methods
 * All eleven of the public methods I used can be found [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.h#L12). Their definitions can be viewed [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieHandler.cpp). Their implementations can be seen [Here](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieList.cpp).
 
-#### The Driver
+##### The Driver
 * The drive class is the [MovieList.cpp](https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject/blob/master/MovieList.cpp) file. Implementations of all the public methods can be viewed there.
 
 ### Dependencies
