@@ -96,7 +96,6 @@ void MovieHandler::addMovie(std::string movie)
 		return;
 	}
 	Node * placement = head;
-	Node * parent = placement;
 	while(placement->next != nullptr)
 	{
 		placement = placement->next;

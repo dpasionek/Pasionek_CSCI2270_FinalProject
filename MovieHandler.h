@@ -37,7 +37,7 @@ public:
 	void removeMovie(std::string title);
 	void pop();
 	void print();
-	std::string getURL(std::string name);
+	std::string getURL(std::string name, bool msg);
 	std::string getCacheAttribute(Attribute attribute);
 	
 	
