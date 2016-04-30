@@ -6,7 +6,8 @@ Are you ever with your significant other and the topic of "We should watch this 
 
 ## How to Run
 If you plan on working through git, use the following commands to clone and run the program:
-* Use `git clone https://github.com/Dpasi314/Pasionek_CSCI2270_FinalProject.git`
+* Fork branch
+* Use `git clone` + your forked repo's url 
 * Once cloned type `make` to build the project
 * Once built successfully, use `./MovieList`
 
