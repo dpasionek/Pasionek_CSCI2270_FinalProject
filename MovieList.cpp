@@ -33,21 +33,36 @@ int main()
 		{
 			std::cout << "--- Movie List: FIND ---" << std::endl;
 			movie = arg.substr(arg.find_first_of(' ') + 1);
-			mInfo = mh.getURL(movie, true);
-			std::cout << mInfo << std::endl;
-			mh.updateCache(movie, mh.getURL(movie, false), "FIND");
+			if(movie == "find"){
+				std::cout << "Please add movie title after argument" << std::endl;
+			}
+			else{
+				mInfo = mh.getURL(movie, true);
+				std::cout << mInfo << std::endl;
+				mh.updateCache(movie, mh.getURL(movie, false), "FIND");
+			}
 		}
 		else if(cmd == "add")
 		{
 			movie = arg.substr(arg.find_first_of(' ') + 1);
-			mh.addMovie(movie);
-			mh.updateCache(movie, mh.getURL(movie, false), "ADD");
+			if(movie == "add"){
+				std::cout << "Please add movie title after argument" << std::endl;
+			}
+			else{
+				mh.addMovie(movie);
+				mh.updateCache(movie, mh.getURL(movie, false), "ADD");
+			}
 		}
 		else if(cmd == "remove")
 		{
 			movie = arg.substr(arg.find_first_of(' ') + 1);
-			mh.removeMovie(movie);
-			mh.updateCache(movie, mh.getURL(movie, false), "REMOVE");
+			if(movie == "remove"){
+				std::cout << "Please add movie title after argument" << std::endl;
+			}
+			else{
+				mh.removeMovie(movie);
+				mh.updateCache(movie, mh.getURL(movie, false), "REMOVE");
+			}
 		}
 		else if(cmd == "history")
 		{
